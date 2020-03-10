@@ -1,0 +1,2 @@
+curl -d "resources/queries.json" -X POST http://localhost:8080/user
+curl "http://localhost:8080/users?page=0"
