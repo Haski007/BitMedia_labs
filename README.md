@@ -36,7 +36,7 @@ var DataBasePort = ":27017"
 ```bash
 curl -d "data.json" -X POST http://localhost:8080/user
 ```
-- GET query on path /users with param `page` draws table of users.
+- GET query on path `/users` with param `page` draws table of users.
 ```bash
 curl "http://localhost:8080/users?page=23"
 ```
