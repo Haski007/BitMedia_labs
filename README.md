@@ -2,9 +2,9 @@
 
 #### Enter `make` at project folder to compile a binary `BitMedia`
 
-####To run a program enter `./BitMedia`
+#### To run a program enter `./BitMedia`
 
-####Configuration file
+#### Configuration file
 - `config.go` file path: `conf/conf.go`
 
 ```golang
