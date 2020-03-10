@@ -33,6 +33,10 @@ var DataBasePort = ":27017"
 
 ### Functional
 - POST query on path `/user` creates a new user.
-`curl -d "data.json" -X POST http://localhost:8080/user`
+```bash
+curl -d "data.json" -X POST http://localhost:8080/user
+```
 - GET query on path /users with param `page` draws table of users.
-`curl "http://localhost:8080/users?page=23"`
+```bash
+curl "http://localhost:8080/users?page=23"
+```
