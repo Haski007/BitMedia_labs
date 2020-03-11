@@ -1,14 +1,14 @@
 package users
 
 import (
-	"strconv"
+	"github.com/globalsign/mgo/bson"
 	"fmt"
 	"encoding/json"
-	"log"
 	"io/ioutil"
 	"net/http"
 
 	"../database"
+	"../errno"
 )
 
 func addUser(w http.ResponseWriter, r *http.Request) {
@@ -18,19 +18,19 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 	
 	bytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 	
 	err = json.Unmarshal(bytes, &newUser)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 
 	err = validateUser(newUser)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 
@@ -38,23 +38,29 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 
 	err = database.UsersCollection.Insert(newUser)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 
 	successCreatingPrint(newUser)
 }
 
-func getCurrentUserID() string {
+func getCurrentUserID() int {
 	count, err := database.UsersCollection.Count()
 	if err != nil {
-		return "0"
+		return 0
 	}
-	return strconv.Itoa(count)
+	var u user
+	err = database.UsersCollection.Find(nil).Select(bson.M{"_id": 1}).Skip(count - 1).One(&u)
+	if err != nil {
+		errno.PrintError(err)
+		return 0
+	}
+	return u.ID + 1
 }
 
 func successCreatingPrint(newUser user) {
-	fmt.Printf("Successfully created user #%s:\n", newUser.ID)
+	fmt.Printf("Successfully created user #%d:\n", newUser.ID)
 	fmt.Printf("Email: %s\n", newUser.Email)
 	fmt.Printf("Last Name: %s\n", newUser.Lname)
 	fmt.Printf("Country: %s\n", newUser.Country)

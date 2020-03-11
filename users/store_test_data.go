@@ -1,14 +1,13 @@
 package users
 
 import (
-	"strconv"
-	"log"
 	"encoding/json"
 	"io/ioutil"
 	"os"
 	"fmt"
 
 	"../database"
+	"../errno"
 )
 
 // InitTestData - create a new collection "users" at DB "BitMedia" and store
@@ -16,14 +15,14 @@ import (
 func InitTestData(fileName string) {
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 	defer jsonFile.Close()
 
 	bytes, err := ioutil.ReadAll(jsonFile)
 	if err != nil {
-		log.Println(err)
+		errno.PrintError(err)
 		return
 	}
 
@@ -33,7 +32,7 @@ func InitTestData(fileName string) {
 		
 	for i := 0; i < len(users.Users); i++ {
 		fmt.Printf("#%d - collected!\n", i)
-		users.Users[i].ID = strconv.Itoa(i)
+		users.Users[i].ID = i
 		database.UsersCollection.Insert(users.Users[i])
 	}
 	fmt.Println("Users collection has been stored by test data!")

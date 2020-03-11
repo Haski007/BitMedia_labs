@@ -11,7 +11,7 @@ import (
 var UsersCollection *mgo.Collection
 
 // GamesCollection - games table.
-var GamesCollection *mgo.Collection
+var UserGamesCollection *mgo.Collection
 
 // InitDB, initialises mongoDB with your configurations at config/config.go.
 func InitDB() {
@@ -21,7 +21,7 @@ func InitDB() {
 	}
 
 	UsersCollection = session.DB("BitMedia").C("users")
-	GamesCollection = session.DB("BitMedia").C("games")
+	UserGamesCollection = session.DB("BitMedia").C("user_games")
 
 
 	if err = session.Ping(); err != nil {

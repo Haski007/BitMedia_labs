@@ -9,6 +9,9 @@ var HostName = "localhost"
 // UsersDataFile - json file name with users test data.
 var UsersDataFile = "resources/users_go.json"
 
+// GamesDataFile - json file name with games test data.
+var GamesDataFile = "resources/games.json"
+
 
 ///////////////////////////// DataBase \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
