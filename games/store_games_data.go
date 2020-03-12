@@ -1,18 +1,19 @@
 package games
 
 import (
-	"math/rand"
 	"encoding/json"
-	"io/ioutil"
-	"os"
 	"fmt"
+	"io/ioutil"
+	"math/rand"
+	"os"
+	"time"
 
 	"../database"
 	"../errno"
 )
 
-// InitGamesCache - save all game to a variable "gamesCache"
-func InitGamesCache(fileName string) {
+// InitGamesCollection - save all game to a variable "gamesCache"
+func InitGamesCollection(fileName string) {
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
 		errno.PrintError(err)
@@ -30,11 +31,28 @@ func InitGamesCache(fileName string) {
 
 	json.Unmarshal(bytes, &games)
 	gamesCache = games.Games
+
+	for i, game := range gamesCache {
+		game.ID = i
+
+		game.CreatedISODate, err = time.Parse("1/2/2006 3:04 PM", game.CreatedStr)
+		if err != nil {
+			errno.PrintError(err)
+			return
+		}
+
+		err = database.GamesCollection.Insert(game)
+		if err != nil {
+			errno.PrintError(err)
+			return
+		}
+		fmt.Printf("#%d - collected!\n", i)
+	}
 }
 
-// InitTestData - create a new collection "games" at DB "BitMedia" and store
+// InitUserGamesCollection - create a new collection "games" at DB "BitMedia" and store
 // all test data from games.json file.
-func InitTestData() {
+func InitUserGamesCollection() {
 	count, err := database.UsersCollection.Count()
 	if err != nil {
 		errno.PrintError(err)

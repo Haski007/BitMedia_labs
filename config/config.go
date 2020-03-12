@@ -15,10 +15,10 @@ var GamesDataFile = "resources/games.json"
 
 ///////////////////////////// DataBase \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-// DataBaseHost, hostname on witch mongoDB is hosting.
-var DataBaseHost = "192.168.99.100"
+// DataBaseHost - hostname on witch mongoDB is hosting.
+var DataBaseHost = "192.168.99.101"
 
-// DataBasePort, port on witch mongoDB is hosting.
+// DataBasePort - port on witch mongoDB is hosting.
 var DataBasePort = ":27017"
 
 ///////////////////////////// Patterns \\\\\\\\\\\\\\\\\\\\\\\\\\\

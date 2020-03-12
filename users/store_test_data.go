@@ -10,9 +10,9 @@ import (
 	"../errno"
 )
 
-// InitTestData - create a new collection "users" at DB "BitMedia" and store
+// InitUsersCollection - create a new collection "users" at DB "BitMedia" and store
 // all test data from users_go.json file.
-func InitTestData(fileName string) {
+func InitUsersCollection(fileName string) {
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
 		errno.PrintError(err)

@@ -21,6 +21,7 @@ run:
 	./$(BINARY_NAME)
 deps:
 	$(GOGET) github.com/globalsign/mgo
+	$(GOGET) github.com/gookit/color
 
 
 # Cross compilation

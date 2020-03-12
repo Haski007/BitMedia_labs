@@ -1,6 +1,11 @@
 package games
 
+import (
+	"time"
+)
+
 var gamesCache []game
+
 
 type userGames struct {
 	ID      int   `bson:"_id"`
@@ -12,8 +17,10 @@ type games struct {
 }
 
 type game struct {
+	ID           int    `bson:"_id"`
 	PointsGained string `json:"points_gained" bson:"points_gained"`
 	WinStatus    string `json:"win_status" bson:"win_status"`
 	GameType     string `json:"game_type" bson:"game_type"`
-	Created      string `json:"created" bson:"created"`
+	CreatedStr   string `json:"created" bson:"-"`
+	CreatedISODate time.Time `bson:"created"`
 }

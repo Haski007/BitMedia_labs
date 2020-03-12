@@ -1,11 +1,12 @@
 package users
 
 import (
-	"github.com/globalsign/mgo/bson"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/globalsign/mgo/bson"
 
 	"../database"
 	"../errno"
@@ -35,6 +36,7 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 	}
 
 	newUser.ID = currentUserID
+
 
 	err = database.UsersCollection.Insert(newUser)
 	if err != nil {
