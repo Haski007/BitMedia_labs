@@ -10,6 +10,7 @@ import (
 
 	"../database"
 	"../errno"
+	"../config"
 )
 
 // InitGamesCollection - save all game to a variable "gamesCache"
@@ -32,22 +33,21 @@ func InitGamesCollection(fileName string) {
 	json.Unmarshal(bytes, &games)
 	gamesCache = games.Games
 
+	var gamesI []interface{}
 	for i, game := range gamesCache {
 		game.ID = i
-
 		game.CreatedISODate, err = time.Parse("1/2/2006 3:04 PM", game.CreatedStr)
 		if err != nil {
 			errno.PrintError(err)
 			return
 		}
-
-		err = database.GamesCollection.Insert(game)
-		if err != nil {
-			errno.PrintError(err)
-			return
-		}
-		fmt.Printf("#%d - collected!\n", i)
+		gamesI = append(gamesI, game)
 	}
+
+	database.GamesCollection.Insert(gamesI...)
+
+	fmt.Println("Games collection has been stored by test data!")
+	
 }
 
 // InitUserGamesCollection - create a new collection "games" at DB "BitMedia" and store
@@ -63,21 +63,25 @@ func InitUserGamesCollection() {
 	
 	var userGames userGames
 
+	var userGamesI []interface{}
+
 	for i := 0; i < count; i++ {
 		randomGamesArray = getRandomGamesArray(gamesCache)
 		userGames.ID = i
 		userGames.GameIDs = randomGamesArray
-		database.UserGamesCollection.Insert(userGames)
-		fmt.Printf("#%d - collected!\n", i)
+
+		userGamesI = append(userGamesI, userGames)
 	}
-	fmt.Println("Games collection has been stored by test data!")
+	
+	database.UserGamesCollection.Insert(userGamesI...)
+	fmt.Println("UserGamesCollection has been stored by test data!")
 }
 
 func getRandomGamesArray(gamesCache []game) []int {
 	var userGamesArray []int
 	var lenUserGamesArray int
 
-	lenUserGamesArray = rand.Intn(100)
+	lenUserGamesArray = rand.Intn(config.MaxUserGames)
 
 	userGamesArray = make([]int, lenUserGamesArray)
 

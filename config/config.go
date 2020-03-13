@@ -1,9 +1,12 @@
 package config
 
-// Port on witch server will be listened.
+// MaxUserGames max numbers games for one user.
+var MaxUserGames = 100
+
+// Port on which server will be listened.
 var Port = ":8080"
 
-// HostName on witch server will be listened.
+// HostName on which server will be listened.
 var HostName = "localhost"
 
 // UsersDataFile - json file name with users test data.
@@ -15,10 +18,10 @@ var GamesDataFile = "resources/games.json"
 
 ///////////////////////////// DataBase \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-// DataBaseHost - hostname on witch mongoDB is hosting.
+// DataBaseHost - hostname on which mongoDB is hosting.
 var DataBaseHost = "192.168.99.101"
 
-// DataBasePort - port on witch mongoDB is hosting.
+// DataBasePort - port on which mongoDB is hosting.
 var DataBasePort = ":27017"
 
 ///////////////////////////// Patterns \\\\\\\\\\\\\\\\\\\\\\\\\\\

@@ -29,11 +29,14 @@ func InitUsersCollection(fileName string) {
 	var users users
 
 	json.Unmarshal(bytes, &users)
-		
-	for i := 0; i < len(users.Users); i++ {
-		fmt.Printf("#%d - collected!\n", i)
-		users.Users[i].ID = i
-		database.UsersCollection.Insert(users.Users[i])
+
+	var usersI []interface{}
+	for i, t := range users.Users {
+		t.ID = i
+		usersI = append(usersI, t)
 	}
+	
+	database.UsersCollection.Insert(usersI...)
+
 	fmt.Println("Users collection has been stored by test data!")
 }
