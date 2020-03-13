@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"net/http"
 
-	"../database"
+	"github.com/Haski007/BitMedia_labs/database"
 	"github.com/Haski007/BitMedia_labs/errno"
 )
 

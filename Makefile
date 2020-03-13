@@ -24,9 +24,8 @@ deps:
 	$(GOGET) github.com/gookit/color
 	$(GOGET) github.com/Haski007/BitMedia_labs/config
 	$(GOGET) github.com/Haski007/BitMedia_labs/errno
-	$(GOGET) 
-	$(GOGET) 
-	$(GOGET) 
+	$(GOGET) github.com/Haski007/BitMedia_labs/database
+	$(GOGET) github.com/Haski007/BitMedia_labs/logger
 
 
 # Cross compilation

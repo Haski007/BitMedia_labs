@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
-
-
-	"github.com/Haski007/BitMedia_labs/config"
+	
 	"./users"
-	"./logger"
 	"./games"
-	"./database"
+	"github.com/Haski007/BitMedia_labs/config"
+	"github.com/Haski007/BitMedia_labs/logger"
+	"github.com/Haski007/BitMedia_labs/database"
 )
 
 func main() {

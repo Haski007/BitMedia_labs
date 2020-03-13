@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"../database"
+	"github.com/Haski007/BitMedia_labs/database"
 	"github.com/Haski007/BitMedia_labs/errno"
 	"github.com/Haski007/BitMedia_labs/config"
 )

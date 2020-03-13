@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 // Handler - handle POST and GET queries with path: "/games".
