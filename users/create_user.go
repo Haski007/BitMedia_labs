@@ -9,7 +9,7 @@ import (
 	"github.com/globalsign/mgo/bson"
 
 	"../database"
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 func addUser(w http.ResponseWriter, r *http.Request) {

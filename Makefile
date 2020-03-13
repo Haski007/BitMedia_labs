@@ -22,6 +22,11 @@ run:
 deps:
 	$(GOGET) github.com/globalsign/mgo
 	$(GOGET) github.com/gookit/color
+	$(GOGET) github.com/Haski007/BitMedia_labs/config
+	$(GOGET) github.com/Haski007/BitMedia_labs/errno
+	$(GOGET) 
+	$(GOGET) 
+	$(GOGET) 
 
 
 # Cross compilation

@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"./database"
-	"./config"
+
+	"github.com/Haski007/BitMedia_labs/config"
 	"./users"
 	"./logger"
 	"./games"
+	"./database"
 )
 
 func main() {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"../database"
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 // Handler - handle POST and GET queries with path: "/users".

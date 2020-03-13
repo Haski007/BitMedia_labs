@@ -6,7 +6,7 @@ import (
 	"github.com/globalsign/mgo/bson"
 
 	"../database"
-	"../config"
+	"github.com/Haski007/BitMedia_labs/config"
 )
 
 func validateUser(user user) error {

@@ -3,7 +3,7 @@ package database
 import (
 	"log"
 
-	"../config"
+	"github.com/Haski007/BitMedia_labs/config"
 	"github.com/globalsign/mgo"
 )
 

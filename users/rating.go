@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	"../database"
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 type m bson.M

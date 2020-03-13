@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"../database"
-	"../errno"
-	"../config"
+	"github.com/Haski007/BitMedia_labs/errno"
+	"github.com/Haski007/BitMedia_labs/config"
 )
 
 // InitGamesCollection - save all game to a variable "gamesCache"

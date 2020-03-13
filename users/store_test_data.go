@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"../database"
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 // InitUsersCollection - create a new collection "users" at DB "BitMedia" and store
@@ -35,7 +35,7 @@ func InitUsersCollection(fileName string) {
 		t.ID = i
 		usersI = append(usersI, t)
 	}
-	
+
 	database.UsersCollection.Insert(usersI...)
 
 	fmt.Println("Users collection has been stored by test data!")

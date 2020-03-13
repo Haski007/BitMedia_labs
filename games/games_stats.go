@@ -8,7 +8,7 @@ import (
 	"regexp"
 
 	"../database"
-	"../errno"
+	"github.com/Haski007/BitMedia_labs/errno"
 )
 
 type statPerDay struct {
